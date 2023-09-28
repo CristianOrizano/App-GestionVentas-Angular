@@ -1,0 +1,52 @@
+
+<div class="container" style="margin-top: 150px;" id="container">
+    <div class="overlay-container">
+		<div class="overlay">
+			
+			<div class="overlay-panel overlay-right">
+				<h1>Hola, Amigo!</h1>
+				<p>Si no tiene cuenta registrate con nosotros</p>
+				<button routerLink="/registro" class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-container sign-in-container">
+		<form [formGroup]="formUser" (submit)="SingIn()">
+			<h1>Sign in</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+
+			<input type="text" name="userna"  formControlName="username"   placeholder="Email"/>
+			<div class="mt-1" style="color: rgb(192, 52, 52);"
+			[hidden]="formUser.get('username')?.valid || formUser.get('username')?.pristine">
+			<p *ngIf="formUser.controls.username.hasError('required')">
+			  Username requerido.
+			</p>
+			<p *ngIf="formUser.controls.username.hasError('pattern')">
+			  El Username min:3 mx:30 caracteres
+			</p>
+		  </div>
+
+
+			<input type="password" name="passwo"  formControlName="password"  placeholder="Password" />
+			<div class="mt-1" style="color: rgb(192, 52, 52);"
+			[hidden]="formUser.get('password')?.valid || formUser.get('password')?.pristine">
+			<p *ngIf="formUser.controls.password.hasError('required')">
+				password requerido.
+			</p>
+			<p *ngIf="formUser.controls.password.hasError('pattern')">
+			  El password min:3 mx:30 caracteres
+			</p>
+		  </div>
+
+		        <br>
+			<button class="btn-sig" [disabled]="formUser.invalid">Sign In</button>
+		</form>
+	</div>
+
+</div>
+

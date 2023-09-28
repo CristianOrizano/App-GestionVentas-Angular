@@ -1,0 +1,17 @@
+
+
+ .icon{
+   color: rgba(255, 255, 255, 0.897);
+   font-size: 20px;
+}
+
+a {
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+hr {
+    background: #0B85F7;
+    height: 40px; /* Aumenta la altura para hacer la línea más gruesa */
+    
+}

@@ -1,0 +1,9 @@
+/* Estilo para campos válidos */
+.ng-valid[required], .ng-valid.required {
+  border: 1px solid rgb(25, 127, 38);
+  box-shadow: 0 0 0 0.2rem #28bd222e;
+} 
+    .ng-invalid:not(form)  {
+      border: 1px solid red;
+			box-shadow: 0 0 0 0.2rem rgba(250, 16, 0, 0.18);
+    }

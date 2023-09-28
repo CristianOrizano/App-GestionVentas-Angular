@@ -1,0 +1,94 @@
+
+<div class="container" style="margin-top: 100px;">
+    <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-6 shadow-lg p-3 mb-5 bg-body rounded ">
+        <div class="d-flex justify-content-center mb-3 pb-1">
+            <h1 class="fw-bolder" style="color: rgb(103, 100, 100);">Sign Up</h1>
+        </div>
+      <form [formGroup]="formUser" (submit)="singUp()"> 
+        <div class="form-floating mb-3">
+            <input type="text" formControlName="nombre" [(ngModel)]="usuario.nombre" class="form-control" id="floatingInput" placeholder="">
+            <label for="floatingInput">Nombre</label>
+            <div class="mt-1" style="color: rgb(192, 52, 52);"
+            [hidden]="formUser.controls.nombre.valid || formUser.controls.nombre.pristine">
+            <p *ngIf="formUser.controls.nombre.hasError('required')">
+              Nombre requerido.
+            </p>
+            <p *ngIf="formUser.controls.nombre.hasError('pattern')">
+              El Nombre min:5 mx:30 caracteres
+            </p>
+          </div>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" formControlName="apellido"  [(ngModel)]="usuario.apellido" class="form-control" id="floatingPassword" placeholder="">
+            <label for="floatingPassword">Apellido</label>
+            <div class="mt-1" style="color: rgb(192, 52, 52);"
+            [hidden]="formUser.get('apellido')?.valid || formUser.get('apellido')?.pristine">
+            <p *ngIf="formUser.get('apellido')?.hasError('required')">
+              Apellido requerido.
+            </p>
+            <p *ngIf="formUser.get('apellido')?.hasError('pattern')">
+              El Apellido min:5 mx:30 caracteres
+            </p>
+          </div>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" formControlName="email" [(ngModel)]="usuario.email" class="form-control" id="floatingInput" placeholder="">
+            <label for="floatingInput">Email </label>
+            <div class="mt-1" style="color: rgb(192, 52, 52);"
+            [hidden]="formUser.get('email')?.valid || formUser.get('email')?.pristine">
+            <p *ngIf="formUser.controls.email.hasError('required')">
+              Email requerido.
+            </p>
+            <p *ngIf="formUser.controls.email.hasError('email')">
+              El Email debe ser valido
+            </p>
+          </div>
+          </div>
+          
+          <div class="form-floating mb-3">
+            <input type="text" formControlName="username" [(ngModel)]="usuario.username" name="username" class="form-control" id="floatingInput" placeholder="">
+            <label for="floatingInput">Username</label>
+            <div class="mt-1" style="color: rgb(192, 52, 52);"
+            [hidden]="formUser.controls.username.valid || formUser.controls.username.pristine">
+            <p *ngIf="formUser.controls.username.hasError('required')">
+              Username requerido.
+            </p>
+            <p *ngIf="formUser.controls.username.hasError('minlength')">
+              El Username min:5 caracteres
+            </p>
+            <p *ngIf="formUser.controls.username.hasError('maxlength')">
+              El Username max:30 caracteres
+            </p>
+          </div>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" formControlName="password" [(ngModel)]="usuario.password" class="form-control" id="floatingPassword" placeholder="">
+            <label for="floatingPassword">Password</label>
+            <div class="mt-1" style="color: rgb(192, 52, 52);"
+             *ngIf="formUser.controls.password.invalid && formUser.controls.password.dirty">
+            <p *ngIf="formUser.controls.password.hasError('required')">
+              password requerido.
+            </p>
+            <p *ngIf="formUser.controls.password.hasError('minlength')">
+              El password min:5 caracteres
+            </p>
+            <p *ngIf="formUser.controls.password.hasError('maxlength')">
+              El password min:3 mx:30 caracteres
+            </p>
+          </div>
+          </div>
+
+          <div class="d-grid gap-2 mt-4">
+            <button [disabled]="formUser.invalid" class="btn btn-primary" >Register</button>
+            <a class="text-center" routerLink="/login">Ya tienes cuenta?</a>
+          </div>
+        </form>
+    </div>
+</div>
+
+</div>
+

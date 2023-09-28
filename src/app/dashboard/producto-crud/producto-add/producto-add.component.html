@@ -1,0 +1,150 @@
+<div class="row">
+    <div class="card mb-4">
+        <div class="card-header" style="background: #168b82;">
+            <h4 class="text-white"><i class="fas fa-table me-1"></i>New Producto </h4>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center mt-3 ">
+                <div class="col-sm-12 col-md-12 col-lg-6 shadow-lg p-3 mb-5 bg-body rounded">
+                    <div style="padding: 15px;">
+                        <form (submit)="saveEmpleado()" [formGroup]="formProducto" method="post" enctype="multipart/form-data">
+                            <div class="row mb-4">
+                                <div class="col-sm-12 col-md-12 col-lg-6 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Descripcion</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-user"></i></span>
+                                        <input formControlName="descripcion" type="text" class="form-control"
+                                            placeholder="Ingrese Descripcion">
+                                    </div>
+                                    <div class="mt-1" style="color: rgb(219, 14, 14);"
+                                        [hidden]="formProducto.get('descripcion')?.valid || formProducto.get('descripcion')?.pristine">
+                                        <p class="fst-italic"
+                                            *ngIf="formProducto.get('descripcion')?.hasError('required')">
+                                            Campo requerido.
+                                        </p>
+                                        <p class="fst-italic"
+                                            *ngIf="formProducto.get('descripcion')?.hasError('minlength')">
+                                            Min:5 max:30 caracteres
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Marca</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-user"></i></span>
+                                        <input type="text" formControlName="marca" class="form-control"
+                                             placeholder="Ingrese Marca">
+                                    </div>
+
+                                    <div class="mt-1" style="color: rgb(219, 14, 14);"
+                                        [hidden]="formProducto.get('marca')?.valid || formProducto.get('marca')?.pristine">
+                                        <p class="fst-italic" *ngIf="formProducto.get('marca')?.hasError('required')">
+                                            Campo requerido.
+                                        </p>
+                                        <p class="fst-italic" *ngIf="formProducto.get('marca')?.hasError('pattern')">
+                                            Marca Min:3 Y Max:30 caracteres
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-sm-12 col-md-12 col-lg-6 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Precio</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-phone"></i></span>
+                                        <input type="text" formControlName="precio" class="form-control"
+                                            placeholder="Ingrese Precio">
+                                    </div>
+                                    <div class="mt-1" style="color: rgb(219, 14, 14);"
+                                        [hidden]="formProducto.get('precio')?.valid || formProducto.get('precio')?.pristine">
+                                        <p class="fst-italic" *ngIf="formProducto.get('precio')?.hasError('required')">
+                                            Campo requerido.
+                                        </p>
+                                        <p class="fst-italic" *ngIf="formProducto.get('precio')?.hasError('pattern')">
+                                            El Precio debe estar entre 1000 y 8000.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Stock</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-money-bill"></i> </span>
+                                        <input type="text" formControlName="stock" class="form-control"
+                                           placeholder="Ingrese Stock">
+                                    </div>
+
+                                    <div class="mt-1" style="color: rgb(219, 14, 14);"
+                                        [hidden]="formProducto.get('stock')?.valid || formProducto.get('stock')?.pristine">
+                                        <p class="fst-italic" *ngIf="formProducto.get('stock')?.hasError('required')">
+                                            Campo requerido.
+                                        </p>
+                                        <p class="fst-italic" *ngIf="formProducto.get('stock')?.hasError('pattern')">
+                                            El stock debe estar entre 10 y 50.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-12 col-md-12 col-lg-6 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Categoria</label>
+                                    <select class="form-select form-control" formControlName="categoria"
+                                        name="txtciudad">
+                                        <option value="">[Seleccione Categoria]</option>
+                                        <option *ngFor="let aux of listCategoria" value="{{aux.codigocate}}">
+                                            {{aux.nombre}}
+                                        </option>
+                                    </select>
+                                    <div class="mt-1" style="color: rgb(219, 14, 14);"
+                                    [hidden]="formProducto.get('categoria')?.valid || formProducto.get('categoria')?.pristine">
+                                    <p class="fst-italic" *ngIf="formProducto.get('categoria')?.hasError('required')">
+                                        Campo requerido.
+                                    </p>
+                                </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 col-lg-6 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Estado</label>
+                                    <select class="form-select form-control" formControlName="estado">
+                                        <option value="">[Seleccione Estado]</option>
+                                        <option *ngFor="let aux of listEstado" value="{{aux.codestad}}">
+                                            {{aux.descripcion}}
+                                        </option>
+                                    </select>
+                                    <div class="mt-1" style="color: rgb(219, 14, 14);"
+                                    [hidden]="formProducto.get('estado')?.valid || formProducto.get('estado')?.pristine">
+                                    <p class="fst-italic" *ngIf="formProducto.get('estado')?.hasError('required')">
+                                        Campo requerido.
+                                    </p>
+                                </div>
+                                </div>
+
+                            </div>
+
+                            <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                                <button class="btn btn-success" [disabled]="formProducto.invalid" type="submit"><i class="fa-sharp fa-solid fa-plus"></i> registrar</button>
+                                <button class="btn btn-secondary" (click)="VolverListado()" type="button"> <i class="fa-sharp fa-solid fa-backward"></i> Back</button>  
+                              </div>
+                              <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    <div class="shadow-lg p-3 mb-5 bg-body rounded d-flex align-items-center flex-column">
+                        <h3 class="fw-bold text-danger">Cargar imagen</h3>
+                        <img [src]="photoSelected || '/assets/images/upload.jpg'" class="shadow-lg p-3 mb-5 bg-body rounded img-fluid" 
+                        (click)="photoInput.click()" width="300px" height="300px" alt="No image">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
