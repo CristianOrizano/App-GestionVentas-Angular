@@ -1,5 +1,6 @@
 import { Categoria } from "../categoria/categoria";
 import { Estado } from "../estado/estado";
+import { Rol } from "../rol/rol";
 
 export class Producto {
 
@@ -12,5 +13,6 @@ export class Producto {
     nimagen:string="";
     fireimagen:string="";
     estado:Estado= new Estado;
+	
 
 }

@@ -1,0 +1,33 @@
+<div class="container-fluid px-4">
+
+    <div class="row">
+        <div class="card mb-4">
+       
+            <div class="card-header" style="background-color: #34495E;">
+                <h2 style="color: white;"><i class="fa-sharp fa-solid fa-shop"></i> Catalogo</h2>
+            </div>
+
+            <div class="card-body ggwell">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 ">
+                    <tr *ngFor="let e of productos">
+                        <div class="col" >
+                          <div class="card" >  
+                            <img class="card-img-top hvr-grow" [src]="e.fireimagen || '/assets/images/default.png'"
+                            width="200px" height="300px">
+                                    <div class="card-body bg-dark">	                             
+                            <h5 class="card-title text-center text-white">{{e.descripcion}}</h5>
+                            <h4 class="card-text text-center text-white">S/.{{e.precio}}.00</h4>
+                            <h5  class="card-text text-center text-white">{{e.marca}}</h5>
+                            <br>
+                                                                                                  
+                            </div>
+                            </div>
+                        </div>
+                    </tr>
+                </div>
+                    
+             </div>
+
+            </div>
+        </div>
+    </div>

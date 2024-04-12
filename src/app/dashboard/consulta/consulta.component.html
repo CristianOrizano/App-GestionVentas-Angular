@@ -1,0 +1,6 @@
+
+<input [(ngModel)]="searchValue" (input)="filterOptions()" placeholder="Buscar..." type="text">
+
+  <li *ngFor="let option of filteredOptions">
+    {{ option }}
+</li>

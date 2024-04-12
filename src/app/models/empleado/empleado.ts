@@ -9,6 +9,8 @@ export class Empleado {
     telefono: number=0;
     sueldo: number=0;
     fechanaci: string="";
+    idCiudad: number=0;
+    state: boolean = false;
     estad: Estado= new Estado();
     ciudad: Ciudad=new Ciudad();
 }

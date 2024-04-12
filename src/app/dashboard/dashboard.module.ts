@@ -14,6 +14,10 @@ import { ProductoCrudComponent } from './producto-crud/producto-crud.component';
 import { ProductoAddComponent } from './producto-crud/producto-add/producto-add.component';
 import { ProductoUpdateComponent } from './producto-crud/producto-update/producto-update.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CatalogoListComponent } from './catalogo-list/catalogo-list.component';
+import { ConsultaComponent } from './consulta/consulta.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { ProfileComponent } from './profile/profile.component';
     ProductoCrudComponent,
     ProductoAddComponent,
     ProductoUpdateComponent,
-    ProfileComponent
+    ProfileComponent,
+    CatalogoListComponent,
+    ConsultaComponent,
+    CategoriaComponent,
+    ClienteComponent
 
   ],
   imports: [
@@ -38,12 +46,8 @@ import { ProfileComponent } from './profile/profile.component';
     SharedModule,
     NgxPaginationModule
     
-    
   ],
   exports: [
-    AuthComponent,
-    RegisterUserComponent,
-    MainPageComponent
   ]
 })
 export class DashboardModule { }

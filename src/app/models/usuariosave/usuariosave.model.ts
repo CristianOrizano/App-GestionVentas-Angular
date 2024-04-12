@@ -1,8 +1,6 @@
-import { Authority } from "../authority/authority";
 import { Rol } from "../rol/rol";
 
-export class Usuario {
-    
+export class Usuariosave {
     id_usuario: number=0;
     email: string="";
     nombre: string="";
@@ -12,10 +10,6 @@ export class Usuario {
     password: string="";
     nimagen: string="";
     roles: Rol[]=[];
-    authorities: Authority[]=[];
-    accountNonExpired: boolean=true;
-    credentialsNonExpired: boolean=true;
-    accountNonLocked: boolean=true
     //imagen
     fireimagen:string="";
 }

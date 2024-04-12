@@ -18,7 +18,7 @@ export class SignInService {
     }
     //traer info usuario basado en su token 
     public getCurrentUser(): Observable<Usuario>{
-      return this.http.get(`${baseUrl}/usuario/actual-usuario`);
+      return this.http.get<Usuario>(`${baseUrl}/usuario/actual-usuario`);
     }
     //iniciamos sesión y establecemos el token en el localStorage
     public loginUser(token:any){
@@ -26,7 +26,7 @@ export class SignInService {
       return true;
     }
     //saber si estamos loguado
-    public isLoggedIn(){
+    public isLoggedIn():boolean {
       let tokenStr = localStorage.getItem('token');
       if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
         return false;
@@ -50,7 +50,7 @@ export class SignInService {
       localStorage.setItem('user', JSON.stringify(user));
     }
   
-    public getUser(){
+    public getUser(): any{
       let userStr = localStorage.getItem('user');
       if(userStr != null){
         return JSON.parse(userStr);

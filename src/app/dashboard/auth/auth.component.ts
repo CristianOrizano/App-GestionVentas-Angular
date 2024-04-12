@@ -28,11 +28,10 @@ export class AuthComponent implements OnInit {
    });
 
    SingIn(){
-
     const login= this.formUser.value;
     this.loginService.generateToken(login).subscribe({
       next: (data:AccesToken)=>{
-        console.log(data);
+        console.log("TOKEN DE ACCESO",data);
         //guardar el token localstorage
         this.loginService.loginUser(data.tokenDeAcceso);
         //traer usuario actual(el tk esta adjuntado por el Interceptor)

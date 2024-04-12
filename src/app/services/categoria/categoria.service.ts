@@ -14,5 +14,19 @@ export class CategoriaService {
   listarCategorias():Observable<Categoria[]>{
     return this.http.get<Categoria[]>(`${baseUrl}/api/categoria`);
  }
+ //metodo del la api para poder Registrar
+ register(data:Categoria):Observable<Categoria>{
+  return this.http.post<Categoria>(`${baseUrl}/api/categoria`,data);
+   }
+
+   //metodo del la api para poder update
+   Update(data:Categoria,id:number):Observable<Categoria>{
+    return this.http.put<Categoria>(`${baseUrl}/api/categoria/${id}`,data);
+     }
+
+      //metodo del la api para poder delet
+   delete(idCli:number):Observable<any>{
+  return this.http.delete<any>(`${baseUrl}/api/categoria/${idCli}`);
+   }
 
 }

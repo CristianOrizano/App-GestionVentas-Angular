@@ -23,20 +23,31 @@ export class RegisterUserComponent {
     'password': ["",[Validators.required,Validators.minLength(5),Validators.maxLength(30)]]
  
    });
+   assignFormValuesToUsuario() {
+    const formulario = this.formUser;
+    this.usuario.nombre = formulario.get('nombre')?.value || '';
+    this.usuario.apellido = formulario.get('apellido')?.value || '';
+    this.usuario.username = formulario.get('username')?.value || '';
+    this.usuario.email = formulario.get('email')?.value || '';
+    this.usuario.password = formulario.get('password')?.value || '';
+  }
+
  
    singUp(){
+    if (this.formUser.invalid) {
+      return this.formUser.markAllAsTouched();
+    }
+    this.assignFormValuesToUsuario();
     //se puede usar para traer los datos del form
     const formData = this.formUser.value;
     console.log(formData);
     this.signUp.addUser(this.usuario).subscribe({
       next: (data:any) => {
-        console.log(data);
         // Restablecer el formulario a su estado inicial
-         this.formUser.reset();
+        this.formUser.reset();
         Swal.fire('Mensaje',data.mensaje,'success');
       },
       error: (error) => {
-        // Manejar errores si es necesario
         console.error(error);
         Swal.fire('Error', 'Hubo un problema al registrar el usuario', 'error');
       }

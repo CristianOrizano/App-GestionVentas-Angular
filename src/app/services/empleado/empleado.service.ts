@@ -13,22 +13,22 @@ export class EmpleadoService {
 
     //metodo del la api para poder listar
  listEmpls():Observable<Empleado[]>{
-  return this.http.get<Empleado[]>(`${baseUrl}/api/res/empleado`);
+  return this.http.get<Empleado[]>(`${baseUrl}/api/empleado`);
 }
 
  //metodo del la api para poder Registrar
  register(data:Empleado):Observable<Empleado>{
-  return this.http.post<Empleado>(`${baseUrl}/api/res/empleado`,data);
+  return this.http.post<Empleado>(`${baseUrl}/api/empleado`,data);
    }
 
    //metodo del la api para poder update
-   Update(data:Empleado):Observable<Empleado>{
-    return this.http.put<Empleado>(`${baseUrl}/api/res/empleado`,data);
+   Update(data:Empleado,id:number):Observable<Empleado>{
+    return this.http.put<Empleado>(`${baseUrl}/api/empleado/${id}`,data);
      }
 
       //metodo del la api para poder delet
    delete(idCli:number):Observable<any>{
-  return this.http.delete<any>(`${baseUrl}/api/res/empleado/${idCli}`);
+  return this.http.delete<any>(`${baseUrl}/api/empleado/${idCli}`);
    }
 
 }

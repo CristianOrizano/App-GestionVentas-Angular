@@ -1,1 +1,90 @@
-<p>profile works!</p>
+
+<div class="modal fade" id="modalUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #037e85;">
+                <h5 class="modal-title text-white fw-bolder" id="exampleModalLabel">Cambiar imagen </h5>
+                <button type="button" id="cerrarr" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+
+                <form [formGroup]="formProducto" >
+                  <img [src]="photoSelected || '/assets/images/user.png'" class="rounded-circle profile-picture" style="width: 220px; height: 220px">
+                    <input class="form-control mt-3" formControlName="imagen" (change)="onPhotoSelected($event)" type="file" required  #fileInput>
+ 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="UpdateImage()" [disabled]="!fileInput.files || fileInput.files.length === 0">Guardar foto</button>
+              </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-11 card mb-4">
+        <div class="card-header mt-2" style="background: #d3032d;">
+            <h4 class="text-white fw-bolder"><i class="fas fa-table me-1"></i>Datos del Perfil </h4>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 shadow p-3 mb-5 bg-body rounded text-center">
+                  <div class="profile-picture-container">
+                    <img [src]="usuarioModel.fireimagen || '/assets/images/user.png'" class="rounded-circle profile-picture " style="width: 120px; height: 120px">
+                    <div class="overlay">
+                      <button data-bs-toggle="modal" (click)="getImage()" data-bs-target="#modalUpdate" id="cargarImagenBtn" class="icon-button">Cargar Imagen</button>
+                    </div>
+                  </div>
+                  <h2 class="fw-bolder my-3">{{usuarioModel.username}}</h2>
+                  <div class="table-responsive">
+                    <table class="table table-bordered border border-3 text-center">
+                        <tbody>
+                          <tr>
+                            <td class="fw-bold">ID Usuario</td>
+                            <td>{{usuarioModel.id_usuario}}</td>              
+                          </tr>
+                          <tr>
+                            <td class="fw-bold">Nombre</td>
+                            <td>{{usuarioModel.nombre}}</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bold">Apellido</td>
+                            <td>{{usuarioModel.apellido}}</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bold">Email</td>
+                            <td>{{usuarioModel.email}}</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bold">Username</td>
+                            <td>{{usuarioModel.username}}</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bold">Password</td>
+                            <td>{{usuarioModel.password}}</td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bold">Rol</td>
+                          
+                            <td *ngIf="usuarioModel && usuarioModel.authorities && usuarioModel.authorities.length > 0">
+                              {{ usuarioModel.authorities[0].authority }}
+                            </td>
+                          
+                          </tr>
+                       
+                        </tbody>
+                      </table>
+                      <button type="button" class="btn btn-primary btn-lg">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

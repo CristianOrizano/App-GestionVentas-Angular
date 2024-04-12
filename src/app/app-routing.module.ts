@@ -11,6 +11,11 @@ import { IsLoggedGuard } from './guard/is-logged.guard';
 import { ProductoCrudComponent } from './dashboard/producto-crud/producto-crud.component';
 import { ProductoAddComponent } from './dashboard/producto-crud/producto-add/producto-add.component';
 import { ProductoUpdateComponent } from './dashboard/producto-crud/producto-update/producto-update.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
+import { CatalogoListComponent } from './dashboard/catalogo-list/catalogo-list.component';
+import { ConsultaComponent } from './dashboard/consulta/consulta.component';
+import { CategoriaComponent } from './dashboard/categoria/categoria.component';
+import { ClienteComponent } from './dashboard/cliente/cliente.component';
 
 
 const routes: Routes = [
@@ -19,10 +24,16 @@ const routes: Routes = [
   children:[
     {path:'',component:PageMainAdminComponent},
     {path:'empleado',component:EmpleadoCrudComponent,canActivate:[RoleAdminGuard]},
+    {path:'cliente',component:ClienteComponent,canActivate:[RoleAdminGuard]},
+    {path:'categoria',component:CategoriaComponent,canActivate:[RoleAdminGuard]},
     {path:'usuario',component:UsuarioCrudComponent,canActivate:[RoleAdminGuard]},
     {path:'producto-list',component:ProductoCrudComponent,canActivate:[RoleAdminGuard]},
     {path:'producto-add',component:ProductoAddComponent,canActivate:[RoleAdminGuard]},
     {path:'producto-update/:idProd',component:ProductoUpdateComponent,canActivate:[RoleAdminGuard]},
+    {path:'profile',component:ProfileComponent,canActivate:[IsLoggedGuard]},
+    {path:'catalogo',component:CatalogoListComponent,canActivate:[IsLoggedGuard]},
+    {path:'consulta',component:ConsultaComponent,canActivate:[IsLoggedGuard]},
+    
   ]
   },
   {path: 'login', component: AuthComponent },

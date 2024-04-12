@@ -122,7 +122,6 @@ export class ProductoAddComponent implements OnInit {
   }
 
 
-  
   getListEstados() {
     this.serEstado.listEstado().subscribe({
       next: (data) => {

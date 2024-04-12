@@ -1,3 +1,3 @@
 export class Authority {
-    authority?: string;
+    authority: string="";
 }

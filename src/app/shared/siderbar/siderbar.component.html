@@ -1,14 +1,14 @@
-<nav class="sb-sidenav accordion sb-sidenav-dark " style="background: #212F3C" id="sidenavAccordion">                
+<nav class="sb-sidenav accordion sb-sidenav-dark " style="background: #17202A" id="sidenavAccordion">                
     <div class="sb-sidenav-menu">
         <div class="nav">
         <div style="text-align: center;margin-top: 15px">
-            <img *ngIf="userRole == 'ADMIN'" alt="" src="/assets/images/admin.png" style="width: 120px;height: 120px">
-            <img *ngIf="userRole == 'USER'" alt="" src="/assets/images/user.png" style="width: 120px;height: 120px">
+            <img  *ngIf="userRole == 'ADMIN'" [src]="usuario.fireimagen || '/assets/images/admin.png'" class="rounded-circle profile-picture" style="width: 120px; height: 120px">
+            <img *ngIf="userRole == 'USER'" [src]="usuario.fireimagen || '/assets/images/user.png'" class="rounded-circle profile-picture" style="width: 120px; height: 120px">
         </div>                        
            <div class=" text-center mt-4">
            <h5  style="color: white;">{{Username}}</h5>
-           <p  style="color: white;">[{{userRole}}]</p>
-
+           <p class="fw-bolder"  style="color: rgba(204, 199, 199, 0.903);">[{{userRole}}]</p>
+        
            </div>
            
            <hr style="height: 4px">
@@ -24,18 +24,30 @@
            </a>
            <div  class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                <nav class="sb-sidenav-menu-nested nav">
-                   <a class="nav-link" routerLink="/dashboard/empleado" >Empleado</a>
-                   <a class="nav-link" routerLink="usuario" >Usuarios</a>
-                   <a class="nav-link" routerLink="producto-list" >Producto</a>
+                   <a class="nav-link fw-bolder text-white"  routerLink="/dashboard/empleado" >Empleado</a>
+                   <a class="nav-link fw-bolder text-white" routerLink="usuario" >Usuarios</a>
+                   <a class="nav-link fw-bolder text-white" routerLink="categoria" >Categoria</a>
+                   <a class="nav-link fw-bolder text-white" routerLink="producto-list" >Producto</a>
                </nav>
            </div>
-            </div>
            
-           <a   class="nav-link" style="color: #D7DBDD"  >
-               <div class="sb-nav-link-icon"><i class="fas fa-solid fa-clipboard-list icon"></i></div>
-               Catalogo
-           </a>
-
+            </div>
+            <a routerLink="/dashboard/catalogo"  class="nav-link" style="color: #D7DBDD"  >
+                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-clipboard-list icon"></i></div>
+                Ventas
+            </a>
+            <a routerLink="cliente" class="nav-link" style="color: #D7DBDD"  >
+                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-clipboard-list icon"></i></div>
+                Clientes
+            </a>
+            <a routerLink="consulta"  class="nav-link" style="color: #D7DBDD"  >
+                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-clipboard-list icon"></i></div>
+                Consultas
+            </a>
+            <a  class="nav-link" style="color: #D7DBDD"  >
+                <div class="sb-nav-link-icon"><i class="fas fa-solid fa-clipboard-list icon"></i></div>
+                Compras
+            </a>
        </div>
    </div>
    
