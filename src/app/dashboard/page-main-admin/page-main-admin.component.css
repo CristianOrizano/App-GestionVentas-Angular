@@ -5,3 +5,9 @@
     font-size: 60px;
     
 }
+
+.das{
+
+   /* Cambiar el color del texto al color del fondo */
+   color: #43484a; /* Color del fondo del gradiente */
+}

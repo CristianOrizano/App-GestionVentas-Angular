@@ -34,6 +34,11 @@ export class ProductoService {
   return this.http.delete<any>(`${baseUrl}/api/productos/${idProd}`);
    }
 
+   //buscar por descripcion
+   FindByDescripcion(descripcion:string):Observable<Producto[]>{
+      return this.http.get<Producto[]>(`${baseUrl}/api/productos/buscar/${descripcion}`);
+       }
+
 
 
 

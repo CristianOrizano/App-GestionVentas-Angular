@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="card mb-4">
-        <div class="card-header" style="background: #168b82;">
-            <h4 class="text-white"><i class="fas fa-table me-1"></i>Update Producto </h4>
+    <div class="card mt-3 p-2">
+        <div class="card-header border border-2">
+            <h4 class="text-black fw-bold"><i class="fas fa-table me-1"></i>Actualizar Producto </h4>
         </div>
         <div class="card-body">
             <div class="row justify-content-center mt-3 ">
@@ -25,7 +25,11 @@
                                         </p>
                                         <p class="fst-italic"
                                             *ngIf="formProducto.get('descripcion')?.hasError('minlength')">
-                                            Min:5 max:30 caracteres
+                                            Minimo 3 caracteres
+                                        </p>
+                                        <p class="fst-italic"
+                                            *ngIf="formProducto.get('descripcion')?.hasError('maxlength')">
+                                            Maximo 60 caracteres
                                         </p>
                                     </div>
                                 </div>

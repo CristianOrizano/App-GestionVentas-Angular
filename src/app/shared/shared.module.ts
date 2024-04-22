@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 
 
 
+
 @NgModule({
   declarations: [
     FooterComponent,
@@ -16,6 +17,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink
+   
   ],
   exports: [
     FooterComponent,

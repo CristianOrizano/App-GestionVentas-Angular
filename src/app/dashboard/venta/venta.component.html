@@ -1,0 +1,289 @@
+<!-- Modal para buscar-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header text-white card-header">
+          <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered " id="myTable">
+                    <thead style="background: #34495E;color: white">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombres</th>
+                            <th>N.Documento</th>
+                            <th>Telefono</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of listClientes | paginate: { itemsPerPage: 10, currentPage: page}">
+                            <td>{{a.codigo}}</td>
+                            <td>{{a.nombre}}  {{a.apellido}}</td>
+                            <td>{{a.ndocumento}}</td>
+                            <td>{{a.telefono}}</td>       
+                            <td><button type="button" data-bs-dismiss="modal" (click)="agregarCliente(a)" class="btn btn-dark "><i class="fa-solid fa-plus"></i></button></td>                                   
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>   
+        </div>
+     
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="card mt-0 shadow-lg p-2 mb-5 bg-body rounded gg">
+        <div class="card-header border border-2">
+            <h4 class="text-white fw-bolder"><i class="fas fa-table me-1"></i>Realizar Venta</h4>
+        </div>
+            <div class="row mt-2">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="card">
+                        <div class="card-header border border-2 p-1 px-4">
+                            <h5 class="text-white fw-bolder">Vendedor</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-user"></i></span> <input type="text"
+                                                [(ngModel)]="usuarioActual.nombre" class="form-control" placeholder="Ingrese Nombre" disabled required>
+                                    </div>                                    
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-user"></i></span> <input type="text"
+                                            class="form-control" placeholder="Ingrese apellido" 
+                                            [(ngModel)]="usuarioActual.apellido" 
+                                            disabled required>
+                                    </div>                         
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Email</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-regular fa-diamond-turn-right"></i></span>
+                                        <input type="text"  class="form-control"
+                                            placeholder="Ingrese Precio"  [(ngModel)]="usuarioActual.email" disabled required>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">   
+                    <div class="card">
+                        <div class="card-header border border-2 p-1 px-4">
+                            <h5 class="text-white fw-bolder">Cliente <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning p-0 px-2"><i class="fa-solid fa-magnifying-glass"></i></button></h5>
+                            
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-user"></i></span> <input type="text"
+                                                [ngModel]="clienteSave.nombre+' '+clienteSave.apellido"  disabled
+                                            class="form-control" placeholder="Ingrese Nombre" required>
+                                    </div>
+        
+                                 
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">N.Documento</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-solid fa-user"></i></span> <input type="text"
+                                                [(ngModel)]="clienteSave.ndocumento" disabled
+                                             class="form-control" placeholder="Ingrese apellido"
+                                            required>
+                                    </div>
+                                    
+                                </div>
+        
+                                <div class="col-sm-12 col-md-6 col-lg-4 form-group">
+                                    <label for="formGroupExampleInput" class="form-label">Telefono</label>
+                                    <div class="input-group ">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fa-sharp fa-regular fa-diamond-turn-right"></i></span>
+                                        <input type="text"  class="form-control"
+                                        [(ngModel)]="clienteSave.telefono" disabled
+                                            placeholder="Ingrese Precio" required>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div >
+                    <div class="card">
+                        <div class="card-header border border-2 p-1 px-4">
+                            <h5 class="text-white fw-bolder">Producto</h5>
+                        </div>
+                        <div class="card-body">
+                            
+                            <div class="row mb-2">
+                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                    <label for="formGroupExampleInput" class="form-label">Producto</label>
+                                    <input type="text" [(ngModel)]="searchValue" (input)="onSearchChange()"  class="form-control"  placeholder="Escriba un producto" required>   
+                                    <div class="position-absolute "style=" width: 25%;">
+                                    <ul class="list-group list-group-flush overflow-auto" style="max-height: 200px;">
+
+                                        <button *ngFor="let option of filteredOptions" (click)="selectOption(option)"  type="button" class="list-group-item list-group-item-action border border-secondary  text-black">
+                                          {{ option.descripcion }}  
+                                           
+                                          <ng-container *ngIf="option.fireimagen" class="mx-5">
+                                            <img [src]="option.fireimagen" width="38" height="38" alt="">
+                                          </ng-container>
+                                          <ng-container *ngIf="!option.fireimagen">
+                                            <div class="spinner-border" role="status">
+                                              <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                          </ng-container>
+                                        </button>
+                                      
+                                        <button *ngIf="!resultSelected && filteredOptions.length === 0 && searchValue !== '' "  type="button" class="list-group-item list-group-item-action fw-normal ">
+                                         no hay resultados
+                                       
+                                       </button>
+                                      </ul>          
+                                    </div>              
+                                </div>
+
+                                <div class="col-sm-12 col-md-6 col-lg-2 ">    
+                                    <label for="formGroupExampleInput" class="form-label">Stock</label>
+                                    <div class="input-group mb-3">                                 
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-cubes"></i></span>
+                                        <input type="text" #stock="ngModel"  [(ngModel)]="productoSave.stock"  class="form-control"  placeholder="Ingrese stock" disabled required>  
+                                      </div>                                                                                                                                               
+                                </div>
+                                   
+                                <div class="col-sm-12 col-md-6 col-lg-2 ">                         
+                                        <label for="formGroupExampleInput" class="form-label">Precio</label>
+                                        <div class="input-group mb-3">                                 
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-dollar-sign"></i></span>
+                                            <input type="text" [(ngModel)]="productoSave.precio"   class="form-control"  placeholder="Ingrese precio" disabled required>   
+                                          </div>     
+                                                                
+                                </div>
+
+
+                                <div class="col-sm-12 col-md-6 col-lg-2 ">                         
+                                    <label for="formGroupExampleInput" class="form-label">Cantidad</label>
+                                    <input type="number" [(ngModel)]="cantidadProductos"  class="form-control" min="1" value="1"  placeholder="Ingrese cantidad"  required>                           
+                               </div>
+                                <div class="col-sm-12 col-md-6 col-lg-2 "> 
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-primary mt-4" (click)="AgregarCarrito()" [disabled]="searchValue === '' || !resultSelected" type="button">
+                                            <i class="fa-solid fa-circle-plus"></i>  Agregar
+                                        </button>                                       
+                                    </div>                                                             
+                               </div>
+                               
+                            </div>
+                       
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+          <div class="overflow-auto" style="max-height: 360px;">  
+            <table class="table  mt-2 mb-0 bg-white text-center  ">
+                <thead  class="text-white card-header">
+                  <tr>
+                    <th scope="col">Producto</th>              
+                    <th scope="col">Precio</th>
+                   
+                    <th scope="col">cantidad</th>
+                 
+                    <th scope="col">subtotal</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <!--cuando modificas una propiedad de un objeto dentro de un ciclo *ngFor, Angular detecta
+                         automáticamente estos cambios y actualiza la vista para reflejarlos.-->
+                    <tr *ngFor="let a of carrito">
+                        <td> <img [src]="a.fireimagen" width="65" height="65" alt="">
+                           <strong class="mx-4"> {{a.descripcion}}</strong> 
+                        </td>
+                       
+                        <td class="fw-bold">S/. {{a.precio}}</td>
+                     
+                        <td class="fw-bold">
+                            <button type="button" (click)="disminuirCantidad(a)" class="btn "><i class="fa-solid fa-minus" style="color: #97181e;font-size: 20px;"></i></button>
+                           {{a.cantidad}}
+                            <button type="button" (click)="aumentarCantidad(a)" class="btn "><i class="fa-solid fa-plus" style="color: #0f4173;font-size: 20px;"></i></button>
+                        </td>
+                     
+                        <td class="fw-bold">S/.  {{a.subTotal}}</td>                                              
+                        <td >     
+                            <button (click)="eliminarCarrito(a)" class="btn btn-eliminar mx-2"><i
+                                class="fa-sharp fa-solid fa-trash-can fs-5 text-danger"></i></button>                  
+                        </td>
+                    </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+            <div class="text-center mt-4 " *ngIf="carrito.length === 0">
+                <p class="text-black fw-bold fs-4 "><img src="/assets/images/carrito.png" style="height: 45px;">No hay productos agregados al carrito.</p>
+            </div>
+        
+            <div class="row bg- text-white justify-content-end fw-bold">             
+                <div class="col-sm-12 col-md-3 bg-"style="height: 140px" >           
+                    <p class="p-1 mb-1" style="background-color: #34495E;margin-left: 96px;">  <strong class="mx-4"><img src="/assets/images/ipq.png" style="height: 35px;"> Cantidad :</strong>({{cantidadTotal}})</p>   
+                    <h3 class="p-2 " style="background-color: #d7232c;margin-left: 96px;">  <strong class="mx-2"><img src="/assets/images/dolar.png" style="height: 35px;"> Total</strong> S/. {{montoTotal}}</h3>                
+                </div>
+                <div class="col-sm-12 col-md-2 bg-"style="height: 50px;" >                                   
+                </div>      
+            </div>
+         
+    
+           <div class="row justify-content-center text-white"> 
+            <div class="col-2 ">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success fw-bold" [disabled]="carrito.length===0 || clienteSeleccionado" (click)="generarVenta()" type="button">
+                        <i class="fa-solid fa-floppy-disk"></i>  Generar Venta
+                    </button>
+                   
+                  </div>            
+              </div>
+              <div class="col-2 ">
+                <div class="d-grid gap-2 ">
+                    <button class="btn btn-secondary fw-bold" (click)="cancelarVenta()" type="button"><i class="fa-solid fa-ban"></i> Cancelar</button>               
+                  </div>            
+              </div>
+            </div>
+          
+    </div>
+    
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+type = "line-spin-fade" [fullScreen] = "true"><p style="color: white" > Procesando... </p></ngx-spinner>

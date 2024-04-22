@@ -16,11 +16,13 @@ import { CatalogoListComponent } from './dashboard/catalogo-list/catalogo-list.c
 import { ConsultaComponent } from './dashboard/consulta/consulta.component';
 import { CategoriaComponent } from './dashboard/categoria/categoria.component';
 import { ClienteComponent } from './dashboard/cliente/cliente.component';
+import { VentaComponent } from './dashboard/venta/venta.component';
+import { ListadoVentasComponent } from './dashboard/listado-ventas/listado-ventas.component';
 
 
 const routes: Routes = [
 
-  {path: 'dashboard', component: MainPageComponent,canActivate:[IsLoggedGuard],
+  {path: 'dashboard', component: MainPageComponent,
   children:[
     {path:'',component:PageMainAdminComponent},
     {path:'empleado',component:EmpleadoCrudComponent,canActivate:[RoleAdminGuard]},
@@ -31,9 +33,9 @@ const routes: Routes = [
     {path:'producto-add',component:ProductoAddComponent,canActivate:[RoleAdminGuard]},
     {path:'producto-update/:idProd',component:ProductoUpdateComponent,canActivate:[RoleAdminGuard]},
     {path:'profile',component:ProfileComponent,canActivate:[IsLoggedGuard]},
-    {path:'catalogo',component:CatalogoListComponent,canActivate:[IsLoggedGuard]},
-    {path:'consulta',component:ConsultaComponent,canActivate:[IsLoggedGuard]},
-    
+    {path:'venta',component:VentaComponent,canActivate:[IsLoggedGuard]},
+    {path:'listar-ventas',component:ListadoVentasComponent,canActivate:[IsLoggedGuard]},
+    {path:'consulta',component:ConsultaComponent,canActivate:[IsLoggedGuard]}, 
   ]
   },
   {path: 'login', component: AuthComponent },

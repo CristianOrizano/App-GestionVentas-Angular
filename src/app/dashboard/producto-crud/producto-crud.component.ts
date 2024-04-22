@@ -84,19 +84,26 @@ export class ProductoCrudComponent implements OnInit {
       cancelButtonText: 'No, cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        if (data.nimagen != "") {
-          const imagesRef = ref(this.storage, `productos/${data.nimagen}`);
-          deleteObject(imagesRef)
-            .then(() => {
-              console.log("Imagen eliminada con éxito del storage");
-            })
-        }
-        this.serProducto.delete(data.codigoele).subscribe(
-          (x) => {
+      
+        this.serProducto.delete(data.codigoele).subscribe({
+           next:(x)=>{
             Swal.fire('Eliminado Correcto', "Exito al Eliminar", 'success')
             this.getListProductos();
-          }
-        );
+            if (data.nimagen != "") {
+              const imagesRef = ref(this.storage, `productos/${data.nimagen}`);
+              deleteObject(imagesRef)
+                .then(() => {
+                  console.log("Imagen eliminada con éxito del storage");
+                })
+            }
+           },error:()=>{
+            Swal.fire('Ocurrió un error inesperado', 'No podemos eliminar este producto debido a que tiene ventas asociadas, le recomendamos deshabilitar este producto si ya no será usado en el sistema.', 'error');
+           }
+
+
+        });
+         
+        
 
       }
     })

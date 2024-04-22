@@ -1,6 +1,29 @@
 
-<input [(ngModel)]="searchValue" (input)="filterOptions()" placeholder="Buscar..." type="text">
 
-  <li *ngFor="let option of filteredOptions">
-    {{ option }}
-</li>
+<div class="container">
+  <div class="mt-5" style="width: 400px;"> 
+  <input class="form-control" [(ngModel)]="searchValue" (input)="onSearchChange()" placeholder="Buscar..." type="text">
+ 
+<ul class="list-group list-group-flush overflow-auto" style="max-height: 200px;">
+
+  <button *ngFor="let option of filteredOptions" (click)="selectOption(option)" type="button" class="list-group-item list-group-item-action fw-normal ">
+     {{ option.descripcion }} 
+    <ng-container *ngIf="option.fireimagen" class="mx-5">
+      <img [src]="option.fireimagen" width="35" height="35" alt="">
+    </ng-container>
+    <ng-container *ngIf="!option.fireimagen">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </ng-container>
+  </button>
+
+  <button *ngIf="!resultSelected && filteredOptions.length === 0 && searchValue !== '' "  type="button" class="list-group-item list-group-item-action fw-normal ">
+   no hay resultados
+ 
+ </button>
+</ul>
+
+</div>
+</div>
+

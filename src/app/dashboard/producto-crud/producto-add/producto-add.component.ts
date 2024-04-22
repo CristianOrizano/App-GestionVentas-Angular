@@ -33,7 +33,7 @@ export class ProductoAddComponent implements OnInit {
     this.formProducto = this.form.group({
       'codigo': ["0"],
       'imagen': [""],
-      'descripcion': ["", [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      'descripcion': ["", [Validators.required,Validators.minLength(3),Validators.maxLength(60)]],
       'categoria': ["", [Validators.required]],
       'stock': ["", [Validators.required,Validators.pattern(/^(10|([1-4][0-9]|50))$/)]],
       'precio': ["", [Validators.required, Validators.pattern(/^([1-7][0-9]{3}|8000)$/)]],

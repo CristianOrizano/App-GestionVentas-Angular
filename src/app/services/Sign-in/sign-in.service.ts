@@ -20,6 +20,7 @@ export class SignInService {
     public getCurrentUser(): Observable<Usuario>{
       return this.http.get<Usuario>(`${baseUrl}/usuario/actual-usuario`);
     }
+    
     //iniciamos sesión y establecemos el token en el localStorage
     public loginUser(token:any){
       localStorage.setItem('token',token);

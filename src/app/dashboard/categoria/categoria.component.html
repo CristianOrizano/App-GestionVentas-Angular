@@ -71,18 +71,18 @@
 
 
 <div class="row">
-    <div class="card mt-2 p-2">
+    <div class="card mt-2 shadow-lg p-2 mb-5 bg-body rounded">
         <div class="card-header border border-2">
             <h4 class="text-black fw-bolder"><i class="fas fa-table me-1"></i>Lista Categorias </h4>
         </div>
         <div class="card-body">
             <!-- Button modal -->
-            <button type="button" (click)="cleanForm()" class="btn btn-primary btn-registrar" data-bs-toggle="modal"
+            <button type="button" (click)="cleanForm()" class="btn btn-primary btn-registrar mb-3" data-bs-toggle="modal"
                 data-bs-target="#modalSave">
                 Registrar </button>
 
-                <div class="mt-2 shadow-lg p-3 mb-5 bg-body rounded">
-                <table class="table table-striped table-bordered" id="myTable">
+                <div class="table-responsive">
+                <table  class="table mx-auto" class="table table-striped table-bordered" >
                     <thead style="background: #34495E;color: white">
                         <tr>
                             <th>#</th>
@@ -101,10 +101,10 @@
                          
                             <td class=" fw-bold">
                                 <div *ngIf="a.state==false" class="d-inline-flex px-2 py-1"
-                                    style="background: red;color: white;border-radius: 15px;font-size: 14px;">
+                                    style="background: rgb(223, 21, 21);color: white;border-radius: 15px;font-size: 14px;">
                                     Inactivo</div>
                                 <div *ngIf="a.state==true" class="d-inline-flex px-2 py-1"
-                                    style="background: green;color: white;border-radius: 15px;font-size: 14px;">
+                                    style="background: rgb(26, 106, 26);color: white;border-radius: 15px;font-size: 14px;">
                                     Activo</div>
                             </td>
                             <td class="d-flex flex-row bd-highlight">
@@ -122,9 +122,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
             </div>
-
+                <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
         </div>
     </div>
 </div>
