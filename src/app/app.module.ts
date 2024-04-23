@@ -19,15 +19,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    DashboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-  
-
+    AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+  
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [authInterceptorProviders],

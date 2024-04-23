@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RouterModule } from '@angular/router';
@@ -22,11 +21,11 @@ import { VentaComponent } from './venta/venta.component';
 import{BrowserAnimationsModule}  from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ListadoVentasComponent } from './listado-ventas/listado-ventas.component';
-import { SiderbarComponent } from '../shared/siderbar/siderbar.component';
+import { DashboardRoutingRoutingModule } from './dashboard-routing-routing.module';
+
 
 @NgModule({
   declarations: [
-    AuthComponent,
     RegisterUserComponent,
     MainPageComponent,
     PageMainAdminComponent,
@@ -42,7 +41,6 @@ import { SiderbarComponent } from '../shared/siderbar/siderbar.component';
     ClienteComponent,
     VentaComponent,
     ListadoVentasComponent
-
   ],
   imports: [
     CommonModule,
@@ -51,11 +49,12 @@ import { SiderbarComponent } from '../shared/siderbar/siderbar.component';
     ReactiveFormsModule,
     SharedModule,
     NgxPaginationModule,
-    BrowserAnimationsModule,
+   
     NgxSpinnerModule,
+    DashboardRoutingRoutingModule
+    
     
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     
   ]

@@ -9,6 +9,8 @@ import { CarritoSave } from 'src/app/models/producto/producto';
   providedIn: 'root',
 })
 export class VentaService {
+  /*NOTA: hay otra forma de hacer el carrito, sin usar varible de clase */
+
   carrito: CarritoSave[] = [];
 
   constructor(private http: HttpClient) {
