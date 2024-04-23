@@ -22,7 +22,7 @@ const routes: Routes = [
     component: MainPageComponent,canActivate:[IsLoggedGuard],
     children: [
       {path:'',component:PageMainAdminComponent,canActivate:[IsLoggedGuard]},
-      { path: 'emple', component: EmpleadoCrudComponent, canActivate: [RoleAdminGuard] },
+      { path: 'proveedor', component: EmpleadoCrudComponent, canActivate: [RoleAdminGuard] },
       {path:'cliente',component:ClienteComponent,canActivate:[IsLoggedGuard]},
       {path:'categoria',component:CategoriaComponent,canActivate:[RoleAdminGuard]},
       {path:'usuario',component:UsuarioCrudComponent,canActivate:[RoleAdminGuard]},
@@ -34,7 +34,7 @@ const routes: Routes = [
       {path:'listar-ventas',component:ListadoVentasComponent,canActivate:[IsLoggedGuard]},
       {path:'consulta',component:ConsultaComponent,canActivate:[IsLoggedGuard]}, 
     ]  
-  }
+  },
  
 
 ];
